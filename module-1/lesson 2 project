@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingleburn Public School</title>
+</head>
+<body>
+    <h1>Welcome to Ingleburn Public School</h1>
+
+    <p>Ingleburn Public School is a friendly and diverse school located in New South Wales, Australia. We have dedicated teachers, hardworking students, and a strong school community.</p>
+
+    <h2>About Our School</h2>
+    <ul>
+        <li>Over 400 students</li>
+        <li>Modern classrooms and computer labs</li>
+        <li>Great sports and arts programs</li>
+        <li>Supportive learning environment</li>
+    </ul>
+
+    <h2>Subjects We Learn</h2>
+    <ol>
+        <li>English</li>
+        <li>Mathematics</li>
+        <li>Science</li>
+        <li>Digital Technologies</li>
+        <li>PDHPE (Health and Physical Education)</li>
+    </ol>
+
+    <h2>Why I Like My School</h2>
+    <P>. I like my school because i get to learn.. :)
+
