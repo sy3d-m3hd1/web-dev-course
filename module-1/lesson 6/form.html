@@ -1,26 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Personal Info Form</title>
 </head>
-<body><h3> Personal information </h3> 
-    <fieldset>
-        <legend>personal details</legend> 
-        <label for="fullname">Full name: </label>
-        <input type="text" id="fullname" name="fullname" placeholder="Enter your name"> <br>
-        
-        <label for="email">Email: </label>
-        <input type="email" name="email" id="email" placeholder="Enter your email"> <br><br>
-        <label for="gender">Gender </label> <br>
-        <input type="radio" name="gender" id="male" value="male">
-        <label for="male">Male</label> <br>
-        <input type="radio" name="gender" id="female" value="female">
-        <label for="female">Female</label><br> <br>
-        <label for="dob">DOB</label>
-        <input type="date" name="dob" id="dob">
-    </fieldset>
-    
+
+<body>
+
+    <h1 style="font-family:cursive; text-align:center;">Personal Information</h1>
+
+    <form>
+
+        <fieldset>
+            <legend>Basic Info</legend>
+
+            <label>Full Name:</label><br />
+            <input type="text" name="fullname" /><br />
+
+            <label>Email Address:</label><br />
+            <input type="email" name="email" /><br />
+
+            <label>Date of Birth:</label><br />
+            <input type="date" name="dob" /><br />
+        </fieldset>
+
+        <fieldset>
+            <legend>Gender</legend>
+
+            <input type="radio" name="gender" value="male" /> Male<br />
+            <input type="radio" name="gender" value="female" /> Female<br />
+        </fieldset>
+
+        <fieldset>
+            <legend>Favorites</legend>
+
+            <label>Favorite Anime (you can select multiple):</label><br />
+            <select name="anime" multiple size="4">
+                <option>Steins;Gate</option>
+                <option>Death Note</option>
+                <option>Attack on Titan</option>
+                <option>Mob Psycho 100</option>
+            </select><br />
+
+            <label>Your Favorite Hobby:</label><br />
+            <select name="hobby">
+                <option value="">Select one</option>
+                <option>Reading</option>
+                <option>Gaming</option>
+                <option>Drawing</option>
+                <option>Sports</option>
+                <option>Coding</option>
+                <option>Music</option>
+            </select><br />
+        </fieldset>
+
+        <fieldset>
+            <legend>About You</legend>
+
+            <label>Short Bio:</label><br />
+            <textarea name="bio" rows="4" cols="40"></textarea><br />
+        </fieldset>
+
+        <input type="submit" value="Submit" />
+
+    </form>
+
+    <p style="text-align:center;">Made by Syed Mehdi</p>
+
 </body>
-</htm
+
+</html>
