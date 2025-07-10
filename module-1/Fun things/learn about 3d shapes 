@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My 3D Shapes Page</title>
+</head>
+<body>
+  <h1>Learn About 3D Shapes!</h1>
+  <p>3D shapes have faces, edges, and vertices. Some have flat faces like cubes, others have curves like cones.</p>
+  
+  <h2>Some of the famous solids written below here!</h2>
+  <ul>
+    <ul>Cube/hexadron</ul>
+    <ul>icoshedron</ul>
+    <ul>octahedron</ul>
+    <ul>dodehedron</ul>
+    <ul>tetron hedron</ul>
+  </ul>
+  
+  <p>For a cool video about 3D shapes, check <a href="https://www.youtube.com/watch?v=XXa_xm-OXwI" target="_blank">this video</a>.</p>
+  
+  <p>Made by Syed Mehdi</p>
+</body>
+</html>
