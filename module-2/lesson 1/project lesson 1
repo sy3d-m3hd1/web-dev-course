@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basic CSS Example</title>
+    <style>
+        body {
+            background-color: lightyellow;
+            font-family: bold, sans-serif;
+        }
+
+        h1 {
+            color: rgb(2, 2, 84);
+            text-align: center;
+        }
+
+        h2 {
+            color: rgb(24, 141, 41);
+        }
+
+        p {
+            color: rgba(95, 196, 255, 0.993);
+            font-size: 18px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1>Welcome to My CSS Page</h1>
+
+    <p>This is a simple web page using CSS. The background is light yellow, and the text is styled to be easier to read.
+    </p>
+
+    <p>We are using properties like <strong>color</strong>, <strong>font-size</strong>, and
+        <strong>background-color</strong>. CSS helps us change how the page looks.</p>
+
+    <h2>My Journey into CSS</h2>
+
+    <p>Today I started learning CSS for the first time. I discovered that CSS is used to style HTML pages and make them
+        look nice. I learned how to change the background colour, text size, font, and text colour. It was fun to see
+        how a few lines of code can change the whole look of a web page. I'm exicted for next session about learning Css.. </p>
+
+</body>
+
+</html>
