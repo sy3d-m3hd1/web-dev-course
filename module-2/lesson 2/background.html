@@ -1,31 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Cool Page</title>
     <style>
         body {
-
-            background-color: purple;
-            background-image: url("background.jpeg");
-            background-repeat: no-repeat;
-            background-position: top right;
-            background-size: cover;
-
-
+            margin: 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6dd5fa 100%);
+            font-family: sans-serif;
+            color: white;
         }
 
-        #gradient1 {
-            background: linear-gradient(red, yellow);
-            height: 500px
+        .box {
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .title {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .list {
+            padding-left: 20px;
+        }
+
+        .footer {   a
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            background-color: rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 
 <body>
-    <div id="gradient1">gradient </div>
+
+    <div class="box title">
+        Welcome to My Page!
+    </div>
+
+    <div class="box">
+        <div>This is my first cool website!</div>
+        <div>I used many divs to build it.</div>
+    </div>
+
+    <div class="box">
+        <div>Things I like:</div>
+        <div class="list">
+            <div>- Coding</div>
+            <div>- Maths</div>
+            <div>- Creating Html Stuff </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div>My dream is to become a good at coding  🔥</div>
+    </div>
+
+    <div class="footer">
+        Coded by Syed Mehdi!! 🚀
+    </div>
 
 </body>
 
