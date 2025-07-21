@@ -1,47 +1,12 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Basic CSS Example</title>
-    <style>
-        body {
-            background-color: lightyellow;
-            font-family: bold, sans-serif;
-        }
-
-        h1 {
-            color: rgb(2, 2, 84);
-            text-align: center;
-        }
-
-        h2 {
-            color: rgb(24, 141, 41);
-        }
-
-        p {
-            color: rgba(95, 196, 255, 0.993);
-            font-size: 18px;
-            padding: 10px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
 <body>
     
-    <h1>Welcome to My CSS Page</h1>
-
-    <p>This is a simple web page using CSS. The background is light yellow, and the text is styled to be easier to read.
-    </p>
-
-    <p>We are using properties like <strong>color</strong>, <strong>font-size</strong>, and
-        <strong>background-color</strong>. CSS helps us change how the page looks.</p>
-
-    <h2>My Journey into CSS</h2>
-
-    <p>Today I started learning CSS for the first time. I discovered that CSS is used to style HTML pages and make them
-        look nice. I learned how to change the background colour, text size, font, and text colour. It was fun to see
-        how a few lines of code can change the whole look of a web page. I'm exicted for next session about learning Css.. </p>
-
 </body>
-
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis autem molestiae eius dolorum ut alias temporibus? Eos velit fugit officia, culpa ullam expedita debitis distinctio voluptas, enim quidem perspiciatis. Harum voluptatem autem, reprehenderit nesciunt, laborum consectetur minima provident, ex ipsam a eligendi. Ex perferendis tenetur dicta eaque sint doloribus blanditiis nisi eos esse cumque, nemo, facilis, dignissimos placeat harum! Commodi tenetur delectus dolorem quam beatae laudantium repellendus quasi reiciendis repellat error distinctio unde quod odit nulla dolores vero nobis, sequi blanditiis? Quo voluptatibus pariatur maiores nostrum, animi, delectus aliquid ipsam excepturi natus sunt amet odit corrupti enim debitis voluptate quaerat quia iusto qui. Alias consequuntur a autem reprehenderit illum repellendus eum suscipit fugit sed atque quae minus repellat et laboriosam cum, sint aspernatur nobis excepturi harum! Aliquam iure officiis harum, dignissimos vitae quas vero quibusdam minima itaque eius suscipit facilis maxime consequatur tempore molestias necessitatibus qui laborum provident laboriosam voluptas dolorem tenetur similique error. Vel ab mollitia dolor perferendis reiciendis. Consectetur ipsa exercitationem qui quibusdam dolor quidem minima, voluptatibus odit nemo quo aliquam dolorum ea vel! Iusto, consequuntur tempora! Dolore esse necessitatibus est error provident quam minima ratione fuga in ducimus, quod totam saepe maiores aperiam odit tempora, tenetur eum magni voluptatibus beatae. Recusandae voluptates neque molestias odit hic corrupti sint dolorum repellendus, dolor, nobis ducimus. Blanditiis commodi, minima suscipit corrupti consequuntur illum eveniet hic omnis dolorum accusantium eligendi ex minus tempore excepturi, mollitia harum magni similique, veniam quis? A consectetur, porro consequatur molestiae ut ipsa maiores perspiciatis deserunt aliquam iste dolores tempora eos quam nulla est eum, sint tempore adipisci hic! Placeat quod dignissimos nisi harum minus sint eum, rerum sequi libero nihil voluptates culpa, ad dicta? Illum id maxime excepturi unde, vitae dolorum quae quas in ex repellat assumenda voluptate soluta voluptatibus perferendis nemo odit expedita quisquam, quod odio, blanditiis quasi? Officiis non ab ullam pariatur. Magni illum voluptates sint reiciendis? Omnis quia, et ipsam, excepturi ipsum eligendi eius autem beatae voluptatem molestiae laudantium dolor illo quos iure vitae non fugit temporibus sequi mollitia rem error perspiciatis. Voluptatum repellat eaque iste harum molestias numquam accusantium culpa, iure odit odio expedita dolor quae rem distinctio voluptatem! Molestias in, at vel tempora ipsa corporis saepe maiores delectus natus qui velit consequatur deserunt aperiam veritatis sunt voluptatum veniam, tempore reiciendis praesentium animi molestiae. Deleniti iusto eligendi nesciunt laborum quasi porro magni, officia rem id ducimus quos quaerat nulla explicabo labore cupiditate quo consectetur! Culpa laudantium nihil, fugit atque neque at enim ex placeat totam asperiores quibusdam suscipit quasi, ipsa iusto recusandae ipsam illo perspiciatis eligendi! Eaque animi officia molestiae omnis vel laboriosam autem qui exercitationem a repellat amet pariatur quos tempora non cum accusamus dignissimos quam tenetur eius error deleniti voluptatum, quis consequatur minus! Porro consectetur fugit tempore beatae! Nemo iure officia porro esse. Officia architecto, earum tempora, sequi nulla voluptatem tenetur officiis alias natus laudantium, in ab sunt vitae ex temporibus aliquid cupiditate? Iusto error qui dolor officia asperiores sint tempora, sapiente fugit praesentium velit reprehenderit consectetur rem, earum molestias labore. Totam voluptatibus sint a quidem officia facere voluptate, voluptatem, aliquam quae placeat aperiam exercitationem non excepturi. Voluptatum eligendi soluta modi similique perspiciatis accusamus voluptatibus rem totam ratione iusto quae nam voluptas doloribus quasi nihil repudiandae aut suscipit eveniet maxime laudantium libero esse, odit dicta. Repellat aliquam illum exercitationem veritatis? Consequuntur, in. Ullam, corrupti. Repellendus, reiciendis ex quia rem nemo, alias dolorem assumenda quaerat ratione facilis esse impedit perspiciatis sequi. Excepturi ea perferendis pariatur odio cupiditate est adipisci hic dolor eveniet error minima tempora harum soluta, debitis architecto. Voluptatibus quas, debitis repudiandae fugit veritatis adipisci unde facere modi totam alias.</p>
 </html>

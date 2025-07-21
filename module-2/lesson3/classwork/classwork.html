@@ -9,38 +9,59 @@
             color: brown;
             text-shadow: 2px 2px 2px rgb(187, 255, 0);
             transform: rotateX(180deg);
+            text-decoration: underline overline;
+            text-decoration-style: double;
+            text-decoration-color: red;
+        }
+
+        #my-paragraph {
+            text-decoration: underline line-through overline;
+            text-decoration-style: dotted;
+            text-decoration-color: blue;
         }
 
         #my-div {
-            box-shadow: 2px 2px 2px orange
+            box-shadow: 2px 2px 2px rgb(255, 0, 0);
         }
 
         #my-div>p {
-            transform: scale(1.2, 1.2);
+            transform: scale(1.1, 1.2);
+            text-decoration: underline line-through overline;
+            text-decoration-style: wavy;
+            text-decoration-color: green;
+        }
 
+        h3 {
+            font-size: 18px;
+            color: #3a3a3a;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            border: 2px dashed #aaa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 
 <body>
-    <h1 id="my-heading">Centered Heading</h1>
-    <p id="my-paragraph">Centered paragraph.</p>
+    <h1 id="my-heading">Welcome to My Cool Page!</h1>
+    <p id="my-paragraph">This is a paragraph with dotted blue underline.</p>
+
     <div id="my-div">
-        <h3>
-            Heading 3
-        </h3>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, impedit! Hic maxime ipsum cumque
-            blanditiis, quia eius ipsam, quo, corporis deserunt officia sequi et aspernatur dolore provident ad dolor ea
-            velit consectetur tempore. Delectus assumenda quaerat molestias doloremque voluptatibus fugiat vitae ad
-            impedit tenetur dolore necessitatibus placeat quisquam totam repudiandae culpa facilis dignissimos, natus
-            incidunt maiores alias nemo nulla quidem eveniet! Alias praesentium non odio consequuntur! Repudiandae
-            alias, dolorum, laborum exercitationem aspernatur labore inventore nesciunt quidem necessitatibus quisquam
-            sequi quis expedita qui iusto facilis ipsam. Mollitia, ullam. Blanditiis, et atque eligendi iste quisquam,
-            facilis natus, amet vitae consequatur temporibus cumque.
-        <p>
+        <p>This paragraph has a wavy green underline, overline and line-through.</p>
     </div>
 
+    <h3>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante
+        dapibus diam.
+    </h3>
 </body>
 
 </html>
