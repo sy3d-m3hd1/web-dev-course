@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>The Golden Slice</title>
+    <style>
+        /* Animated gradient background */
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(-45deg, #0D1117, #161B22, #2C3E50, #0D1117);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #F0F6FC;
+            margin: 0;
+            padding: 40px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #FFB100;
+            text-align: center;
+            text-shadow: 0 0 8px #FFB100;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h1::before {
+            content: "🍞 ";
+            position: relative;
+            top: 4px;
+        }
+
+        h1::after {
+            content: " 🍯";
+            position: relative;
+            top: 4px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            background-color: rgba(28, 31, 38, 0.8);
+            border-left: 5px solid #FFB100;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        p::first-letter {
+            font-size: 180%;
+            color: #FF6B6B;
+            font-weight: bold;
+        }
+
+        p:not(:first-of-type) {
+            text-decoration: underline dotted #FFD700;
+        }
+
+        p:hover {
+            transform: scale(1.03);
+        }
+
+        blockquote {
+            font-style: italic;
+            background-color: rgba(42, 45, 58, 0.85);
+            border-left: 5px solid #FFD700;
+            padding: 15px 20px;
+            margin: 30px 0;
+            color: #FFE27A;
+            border-radius: 6px;
+        }
+
+        ul {
+            padding-left: 25px;
+            margin-bottom: 30px;
+        }
+
+        ul li {
+            font-weight: bold;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: default;
+        }
+
+        ul li::before {
+            content: "🔥";
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+
+        ul li:hover {
+            color: #FF7F50;
+            background-color: #292F3D;
+            border-radius: 6px;
+            padding-left: 28px;
+        }
+
+        ul li:nth-child(2) {
+            background-color: #312244;
+            border-left: 4px solid #C084FC;
+            border-radius: 6px;
+            padding-left: 26px;
+        }
+
+        a {
+            color: #58A6FF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a::after {
+            content: " ⚡";
+        }
+
+        a:hover {
+            color: #FFD700;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            padding: 20px 0 10px 0;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>The Golden Slice</h1>
+
+    <p>Without a doubt, toast is the ultimate invention in food history. It's simple, crispy, and absolutely perfect.
+    </p>
+
+    <p>No other food can do what toast does. It can be sweet, salty, crunchy, soft in the middle, golden on the outside
+        — literally perfection on a plate.</p>
+
+    <blockquote>
+        “If toast isn"t on your plate, is your day even started?”
+    </blockquote>
+
+    <p>Here"s why toast is absolutely unmatched:</p>
+
+    <ul>
+        <li>It goes with everything — eggs, jam, butter, avocado, you name it</li>
+        <li>You can eat it for breakfast, lunch, dinner, or even midnight snack</li>
+        <li>It smells like heaven when it"s fresh from the toaster</li>
+    </ul>
+
+    <p>Learn how to make a juicy tasty 🤤 toast!!!!!!!! And thanks me later 👋🏻 <a href="#">here</a>.</p>
+
+    <footer>© 2025 Syed Mehdi</footer>
+
+</body>
+
+</html>
