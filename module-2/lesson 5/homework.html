@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f0fe;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #1a237e;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .box {
+            width: 230px;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            user-select: none;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .margin {
+            background-color: #d0e8ff;
+            border: 3px solid #90caf9;
+            color: #0d47a1;
+            margin: 40px;
+            position: relative;
+        }
+
+        .margin::before {
+            content: "Margin";
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #1976d2;
+        }
+
+        .border {
+            background-color: #e3f2fd;
+            border: 6px solid #42a5f5;
+            color: #1565c0;
+            position: relative;
+        }
+
+        .border::before {
+            content: "Border";
+            position: absolute;
+            top: -32px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #1565c0;
+        }
+
+        .padding {
+            background-color: #bbdefb;
+            border: none;
+            padding: 40px 25px;
+            color: #0d47a1;
+            position: relative;
+        }
+
+        .padding::before {
+            content: "Padding";
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #0d47a1;
+        }
+
+        .content {
+            background-color: #90caf9;
+            border: none;
+            padding: 20px;
+            color: #0d47a1;
+            position: relative;
+        }
+
+        .content::before {
+            content: "Content";
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #0d47a1;
+        }
+
+        .explanation {
+            max-width: 700px;
+            margin-top: 60px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #0d47a1;
+            text-align: center;
+            user-select: text;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .margin {
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Learn the Box Model</h1>
+
+    <div class="container">
+        <div class="box margin">
+            Margin is the space outside the border.<br>
+            It creates space between boxes.
+        </div>
+        <div class="box border">
+            Border is the line around the box.<br>
+            It wraps the padding and content.
+        </div>
+        <div class="box padding">
+            Padding is the space inside the border.<br>
+            It pushes the content inside.
+        </div>
+        <div class="box content">
+            Content is the stuff inside the box.<br>
+            Like text or images.
+        </div>
+    </div>
+
+    <div class="explanation">
+        The box model is how websites control spacing and layout. Every box has margin, border, padding, and content.
+        Learning this helps you build better webpages!
+    </div>
+
+</body>
+
+</html>
