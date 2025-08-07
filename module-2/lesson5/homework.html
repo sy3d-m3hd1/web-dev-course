@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning Example</title>
+
+    <style>
+        /* Page background and font */
+        body {
+            background-color: #e6f7ff;
+            /* light blue */
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* This is the main box (relative) */
+        #relative {
+            position: relative;
+            width: 700px;
+            height: 500px;
+            border: 4px solid #ffa500;
+            /* orange border */
+            background-color: #fff;
+            /* white background */
+            margin: 0 auto;
+            /* center it */
+        }
+
+        /* All boxes inside are absolutely positioned */
+        .box {
+            position: absolute;
+            width: 200px;
+            padding: 10px;
+            border: 2px solid #444;
+            background-color: #ffefd5;
+            /* light peach */
+            font-size: 14px;
+        }
+
+        /* Top-right corner */
+        #box1 {
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Bottom-left corner */
+        #box2 {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* Center of the box */
+        #box3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* centers it */
+            background-color: #ffd700;
+            /* gold */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎨 HTML Positioning Example</h1>
+
+    <div id="relative">
+        <!-- Parent box with relative position -->
+        <p><strong>This is the main box (Relative)</strong></p>
+
+        <!-- Child boxes with absolute position -->
+        <div class="box" id="box1">Top Right (Absolute)</div>
+        <div class="box" id="box2">Bottom Left (Absolute)</div>
+        <div class="box" id="box3">Center (Absolute)</div>
+    </div>
+
+</body>
+
+</html>
