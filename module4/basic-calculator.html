@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Maths operation!</h2>
+    <p>A <b>statement</b> is a list of <b>instructions</b> to be executed by a computer.</p>
+    <p id="sum-container"></p>
+    <p id="diff-container"></p>
+    <p id="div-container"></p>
+    <p id="mod-container"></p>
+ 
+
+
+    <script>
+        var x, y, z; 
+        x = 8;
+        y = 5;
+        sum = x + y;
+        document.getElementById("sum-container").innerHTML =
+            "The sum of " + x + " and " + y + " is " + sum + ".<br>";
+            
+
+        diff = x - y;
+        document.getElementById("diff-container").innerHTML =
+        "The difference of " + x + " and " + y + " is " + diff + ".<br>";
+
+        div = x / y;
+        document.getElementById("div-container").innerHTML =
+            "The division of " + x + " b " + y + " is " + div + ".<br>";
+
+      
+        mod = x % y;
+        document.getElementById("mod-container").innerHTML =
+            "The remainder when " + x + " is divided by " + y + " is " + mod + ".";
+    </script>
+</body>
+
+</html>

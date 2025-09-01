@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Maths operation!</h2>
+    <p>A <b>statement</b> is a list of <b>instructions</b> to be executed by a computer.</p>
+    <button onclick="sum()">Add </button>
+    <button onclick="diff()">diff </button>
+    <button onclick="div()">div </button>
+    <button onclick="mod()">mod</button>
+    <button onclick="multiply()">multiply</button>
+    <p id="output-container"></p>
+
+
+
+    <script>
+        var x, y;
+        x = 8;
+        y = 5;
+
+        function sum(){
+            sum = x + y;
+            document.getElementById("output-container").innerHTML =
+                "The sum of " + x + " and " + y + " is " + sum + ".<br>";
+
+        }
+
+        diff = x - y;
+        document.getElementById("output-container").innerHTML =
+            "The difference of " + x + " and " + y + " is " + diff + ".<br>";
+
+        div = x / y;
+        document.getElementById("output-container").innerHTML =
+            "The division of " + x + " b " + y + " is " + div + ".<br>";
+
+
+        mod = x % y;
+        document.getElementById("output-container").innerHTML =
+            "The remainder when " + x + " is divided by " + y + " is " + mod + ".";
+    </script>
+</body>
+
+</html>
