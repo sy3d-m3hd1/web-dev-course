@@ -2,16 +2,35 @@
 <html>
 
 <body>
-    <h2>JavaScript Statements</h2>
-    <p>A <b>JavaScript program</b> is a list of <b>statements</b> to be executed by a computer.</p>
+    <h2>Maths operation!</h2>
+    <p>A <b>statement</b> is a list of <b>instructions</b> to be executed by a computer.</p>
     <p id="demo"></p>
+
     <script>
-        var x, y, z; // Statement 1
-        x = 10; // Statement 2
-        y = 500; // Statement 3
-        z = x * y; // Statement 4
+        var x, y, z; // Sum
+        x = 8;
+        y = 12;
+        z = x + y;
         document.getElementById("demo").innerHTML =
-            "The value of z is " + z + ".";
+            "The sum of " + x + " and " + y + " is " + z + ".<br>";
+
+        x = 20; // Difference
+        y = 7;
+        z = x - y;
+        document.getElementById("demo").innerHTML 
+            "The difference of " + x + " and " + y + " is " + z + ".<br>";
+
+        x = 50; 
+        y = 5;
+        z = x / y;
+        document.getElementById("demo").innerHTML +=
+            "The division of " + x + " b " + y + " is " + z + ".<br>";
+
+        x = 17; // Remainder
+        y = 3;
+        z = x % y;
+        document.getElementById("demo").innerHTML +=
+            "The remainder when " + x + " is divided by " + y + " is " + z + ".";
     </script>
 </body>
 
