@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Maths operation!</h2>
+    <p>Basic calculation</p>
+    <button onclick="sum()">Add</button>
+    <button onclick="diff()">sub</button>
+    <button onclick="div()">divide</button>
+    <button onclick="mod()">mod</button>
+    <button onclick="multiply()">multiply</button>
+    <p id="output-container"></p>
+
+    <script>
+        var x = 6;
+        var y = 3;
+
+        function sum() {
+            document.getElementById("output-container").innerHTML =
+                "The sum of " + x + " and " + y + " is " + (x + y) + ".";
+        }
+
+        function diff() {
+            document.getElementById("output-container").innerHTML =
+                "The difference of " + x + " and " + y + " is " + (x - y) + ".";
+        }
+
+        function div() {
+            document.getElementById("output-container").innerHTML =
+                "The division of " + x + " by " + y + " is " + (x / y) + ".";
+        }
+
+        function mod() {
+            document.getElementById("output-container").innerHTML =
+                "The remainder when " + x + " is divided by " + y + " is " + (x % y) + ".";
+        }
+
+        function multiply() {
+            document.getElementById("output-container").innerHTML =
+                "The product of " + x + " and " + y + " is " + (x * y) + ".";
+        }
+    </script>
+</body>
+
+</html>
