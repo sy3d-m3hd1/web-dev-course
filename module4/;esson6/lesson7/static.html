@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Methods</title>
+</head>
+<body>
+
+    <p>A static method is created with the "static" keyword, and you can only call the method on the class itself.</p>
+
+    <p id="hello"></p>
+    <p id="hi"></p>
+    <p id="welcome"></p>
+
+    <script>
+        class Student {
+            constructor(name) {
+                this.studentname = name;
+            }
+
+            // A static method
+            static hello() {
+                return "Hello!!";
+            }
+
+            // A static method that accepts an instance object as a parameter
+            static welcome(x) {
+                return "Welcome " + x.studentname;
+            }
+
+            // An instance method (non-static)
+            hi() {
+                return "Hi " + this.studentname;
+            }
+        }
+
+        // Create a student object (an instance of the class)
+        let myname = new Student("Carol");
+
+        // Call 'hello()' on the Class Student and NOT on the 'myname' object
+        // because 'hello()' is a static method.
+        document.getElementById("hello").innerHTML = Student.hello();
+
+        // Call 'hi()' on the 'myname' object (instance)
+        // because 'hi()' is an instance method.
+        document.getElementById("hi").innerHTML = myname.hi();
+
+        // Call 'welcome()' on the Class, passing the 'myname' object as a parameter
+        // 'welcome()' is static but can access object data since the object is passed.
+        document.getElementById("welcome").innerHTML = Student.welcome(myname);
+    </script>
+
+</body>
+</html>

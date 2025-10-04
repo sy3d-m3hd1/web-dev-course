@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js inheritance!</title>
+</head>
+
+<body>
+
+    <h2>JavaScript Class</h2>
+    <p>How to use a JavaScript Class.</p>
+
+    <p id="output1"></p>
+    <p id="output2"></p>
+
+    <script>
+        // creating a class
+        class Student {
+            constructor(name, year, hobby) {
+                this.name = name;
+                this.year = year;
+                this.hobby = hobby;
+            }
+
+            // creating age method for class student
+            age() {
+                let date = new Date();
+                return date.getFullYear() - this.year;
+            }
+        }
+
+        // use student class with two objects
+        let st1 = new Student("peterparker", 2015, "playing cricket")
+        document.getElementById("output1").innerHTML = "My name is " + st1.name + ". I was born in " + st1.year + ". My hobby is " + st1.hobby
+        let st2 = new Student("jack", 2012, "playing football")
+        document.getElementById("output2").innerHTML = "My name is " + st2.name + ". I was born in " + st2.year + ". My hobby is " + st2.hobby
+
+    </script>
+
+</body>
+
+</html>
