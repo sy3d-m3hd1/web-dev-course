@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Info</title>
+</head>
+
+<body>
+    <h1>High School Students</h1>
+
+    <p id="students"></p>
+
+    <script>
+        class Student {
+            constructor(name, grade) {
+                this.name = name;
+                this.grade = grade; 
+            }
+
+            static showInfo(student) {
+                return "Name: " + student.name + ", Grade: " + student.grade;
+            }
+        }
+        class HighSchoolStudent extends Student {
+            constructor(name, grade, favoriteSubject) {
+                super(name, grade);                 
+                this.favoriteSubject = favoriteSubject; 
+            }
+            static showFullInfo(student) {
+                return Student.showInfo(student) + ", Favorite Subject: " + student.favoriteSubject + "<br>";
+            }
+        }
+        const student1 = new HighSchoolStudent("Alice", 10, "Math");
+        const student2 = new HighSchoolStudent("Bob", 11, "Science");
+
+        const studentsParagraph = document.getElementById("students");
+        studentsParagraph.innerHTML = HighSchoolStudent.showFullInfo(student1);
+        studentsParagraph.innerHTML += HighSchoolStudent.showFullInfo(student2);
+    </script>
+</body>
+
+</html>
