@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sorting</title>
+</head>
+
+<body>
+    <h2>Array Sorting</h2>
+
+    <p>Enter a number to add to the array:</p>
+    <input type="number" id="numInput" placeholder="Number">
+    <button onclick="addNumber()">Add</button>
+
+    <p>
+        <button onclick="ascending()">Sort Ascending</button>
+        <button onclick="descending()">Sort Descending</button>
+    </p>
+
+    <h3>Array:</h3>
+    <p id="result"></p>
+
+    <script>
+        var points = [40, 12, 15, 24, 35];
+
+        document.getElementById("result").innerHTML = points;
+
+        function addNumber() {
+            var num = document.getElementById("numInput").value;
+            if (num) {
+                points.push(Number(num));
+                document.getElementById("result").innerHTML = points;
+                document.getElementById("numInput").value = "";
+            }
+        }
+
+        function ascending() {
+            points.sort(function (a, b) { return a - b; });
+            document.getElementById("result").innerHTML = points;
+        }
+
+        function descending() {
+            points.sort(function (a, b) { return b - a; });
+            document.getElementById("result").innerHTML = points;
+        }
+    </script>
+</body>
+
+</html>
