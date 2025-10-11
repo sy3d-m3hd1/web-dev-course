@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+
+    <script>
+        let text = "Mr Mehdi couldnt find a text by himself."
+        let postion = text.search("Mehdi");
+
+        document.getElementById("demo").innerHTML = postion
+        document.getElementById("demo2").innerHTML = text.replace("text","paragraph");
+    </script>
+
+
+
+</body>
+
+</html>
