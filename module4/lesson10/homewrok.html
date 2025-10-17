@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async and Await Example</title>
+</head>
+
+<body>
+    <h2>Async and Await Example</h2>
+
+    <p id="message">Click the button to start.</p>
+    <button onclick="loadData()">Start</button>
+
+    <script>
+        async function loadData() {
+            
+            document.getElementById("message").textContent = "Loading data... please be apatient.";
+            await new Promise(function (resolve) {
+                setTimeout(resolve, 3000);
+            });
+            document.getElementById("message").textContent = "Data loaded successfully!";
+        }
+    </script>
+</body>
+
+</html>
