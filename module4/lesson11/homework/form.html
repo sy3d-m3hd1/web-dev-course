@@ -32,7 +32,7 @@
                 message.textContent = "Please enter your age.";
             } else if (username !== correctUsername) {
                 message.textContent = "Incorrect username.";
-            } else if (age > 18) {
+            } else if (age < 18) {
                 message.textContent = "You must be at least 18.";
             } else {
                 message.textContent = "Access granted.";
