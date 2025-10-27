@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Professional Developer Portfolio</title>
+    <!-- Load Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Load Google Font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Custom Styles for Executive Dark Theme --- */
+        :root {
+            --bg-dark: #0d0d0d;
+            /* Ultra Deep Black */
+            --card-bg: #1a1a1a;
+            /* Dark Gray for cards */
+            --text-light: #f0f0f0;
+            /* Crisp Off-White text */
+            --primary-accent: #FFC107;
+            /* Professional Gold/Amber */
+            --secondary-text: #b0b0b0;
+            /* Muted secondary text */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+            /* Improved vertical rhythm */
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background-color: var(--card-bg) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            /* Deeper shadow for premium elevation */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            /* Subtle spacing for professionalism */
+        }
+
+        .nav-link:hover {
+            color: var(--primary-accent) !important;
+        }
+
+        .nav-link.active {
+            color: var(--primary-accent) !important;
+            border-bottom: 2px solid var(--primary-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 150px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+            border-bottom: 2px solid rgba(255, 193, 7, 0.1);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-weight: 900;
+            /* Extra bold */
+            line-height: 1.1;
+            color: white;
+            letter-spacing: -1px;
+            /* Tighter heading kerning */
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+        }
+
+        .lead {
+            font-weight: 300;
+        }
+
+        /* Section General Styles */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            font-weight: 700;
+            border-left: 5px solid var(--primary-accent);
+            padding-left: 1.2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            /* Helps with centering/dividers */
+        }
+
+        .divider {
+            height: 2px;
+            width: 80px;
+            background-color: var(--primary-accent);
+            margin: 0 auto 50px auto;
+            opacity: 0.5;
+        }
+
+        .accent-text {
+            color: var(--primary-accent);
+        }
+
+        /* Card Styling */
+        .card-base {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.75rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            /* Deep, defined shadow */
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card-base:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 193, 7, 0.25);
+        }
+
+        /* Button Styling - Bold and Professional */
+        .btn-professional {
+            background-color: var(--primary-accent);
+            border: none;
+            color: var(--bg-dark);
+            font-weight: 700;
+            transition: all 0.3s;
+            border-radius: 0.4rem;
+        }
+
+        .btn-professional:hover {
+            background-color: #FFA000;
+            color: var(--bg-dark);
+            box-shadow: 0 4px 10px rgba(255, 193, 7, 0.4);
+        }
+
+        .btn-outline-professional {
+            border: 2px solid var(--primary-accent);
+            color: var(--primary-accent);
+            background: transparent;
+            font-weight: 700;
+        }
+
+        .btn-outline-professional:hover {
+            background-color: var(--primary-accent);
+            color: var(--bg-dark);
+        }
+
+        /* Timeline Styles */
+        .timeline::before {
+            left: 50%;
+            width: 3px;
+            background-color: #333;
+        }
+
+        .timeline>li>.timeline-badge {
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.7);
+            /* Brighter accent shadow */
+        }
+
+        /* Adjusted width for timeline panels for a tighter fit */
+        @media (min-width: 768px) {
+            .timeline>li>.timeline-panel {
+                width: 47%;
+            }
+        }
+
+        /* Contact Card Specific Styles */
+        .contact-card-title {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-detail {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Utility */
+        .text-muted-professional {
+            color: var(--secondary-text) !important;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="56">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">Your Name | Developer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Key Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header id="home" class="hero-section text-center">
+        <div class="container">
+            <!-- Professional Avatar Placeholder -->
+            <div class="mx-auto mb-4"
+                style="width: 150px; height: 150px; background: rgba(255, 193, 7, 0.1); border-radius: 50%; border: 3px solid var(--primary-accent);">
+                <img src="https://placehold.co/150x150/FFC107/121212?text=YN" alt="Professional Profile"
+                    class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+            </div>
+
+            <h1 class="hero-title mb-3">Scaling <span class="accent-text">Engineering Teams</span> & Architecture</h1>
+            <p class="lead mb-5 text-muted-professional">Delivering high-ROI, resilient, and enterprise-grade software
+                solutions from conceptual design to global deployment.</p>
+
+            <a class="btn btn-professional btn-lg me-3 mb-2 mb-sm-0" href="#projects">View Portfolio Highlights</a>
+            <a class="btn btn-outline-professional btn-lg me-3 mb-2 mb-sm-0" href="#contact">Schedule a Call</a>
+            <a class="btn btn-outline-professional btn-lg" href="#" download="Your_Name_CV.pdf">
+                <i class="fas fa-file-pdf me-2"></i> Download Full CV (PDF)
+            </a>
+        </div>
+    </header>
+
+    <!-- 2. Expertise Section -->
+    <section id="about" class="section-padding">
+        <div class="container text-center">
+            <h2 class="section-header">Core Technical Expertise</h2>
+            <div class="divider"></div>
+
+            <p class="fs-5 text-muted-professional mb-5">I specialize in full-stack engineering, delivering end-to-end
+                applications from conceptual design to production deployment. My methodology emphasizes **scalability,
+                security, and clean architecture**.</p>
+
+            <h4 class="text-light mb-4 text-center">Key Technologies & Domains</h4>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <span class="badge bg-warning text-dark px-3 py-2 fw-bold rounded-pill shadow">React & TypeScript</span>
+                <span class="badge bg-warning text-dark px-3 py-2 fw-bold rounded-pill shadow">Node.js / Express</span>
+                <span class="badge bg-warning text-dark px-3 py-2 fw-bold rounded-pill shadow">Microservices /
+                    APIs</span>
+                <span class="badge bg-warning text-dark px-3 py-2 fw-bold rounded-pill shadow">AWS & GCP</span>
+                <span class="badge bg-warning text-dark px-3 py-2 fw-bold rounded-pill shadow">Docker /
+                    Kubernetes</span>
+                <span class="badge bg-warning text-dark px-3 py-2 fw-bold rounded-pill shadow">PostgreSQL &
+                    MongoDB</span>
+                <span class="badge bg-warning text-dark px-3 py-2 fw-bold rounded-pill shadow">CI/CD & Automation</span>
+            </div>
+
+            <div class="row mt-5 pt-5 text-center">
+                <div class="col-md-4 mb-4">
+                    <h3 class="accent-text fs-4">Front-End Architecture</h3>
+                    <p class="text-muted-professional small">Advanced React development, State Management
+                        (Redux/Context), Component Design Systems, UI/UX optimization.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 class="accent-text fs-4">API & Services</h3>
+                    <p class="text-muted-professional small">Designing and maintaining robust RESTful and GraphQL APIs
+                        using Node.js/Express and Python frameworks (Django/Flask).</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h3 class="accent-text fs-4">Cloud & Deployment</h3>
+                    <p class="text-muted-professional small">Deployment on AWS/GCP, Containerization (Docker), CI/CD
+                        pipelines, and serverless compute models.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Professional Experience Section -->
+    <section id="experience" class="section-padding" style="background-color: #121212;">
+        <div class="container text-center">
+            <h2 class="section-header">Professional Experience & Timeline</h2>
+            <div class="divider"></div>
+
+            <ul class="timeline">
+                <!-- Experience Item 1 -->
+                <li>
+                    <div class="timeline-badge"><i class="fas fa-sitemap"></i></div>
+                    <div class="timeline-panel card-base">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title accent-text">Senior Software Architect</h4>
+                            <p class="text-muted-professional mb-1 fw-bold">TechCorp Global, San Francisco</p>
+                            <p class="small text-muted-professional">2021 - Present</p>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="text-light small">Led a team of 5 engineers in redesigning the core microservice
+                                architecture, resulting in **40% latency reduction** across critical customer-facing
+                                APIs. Spearheaded cloud cost optimization, decreasing monthly expenditure by 22%.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Experience Item 2 (Inverted) -->
+                <li class="timeline-inverted">
+                    <div class="timeline-badge"><i class="fas fa-laptop-code"></i></div>
+                    <div class="timeline-panel card-base">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title accent-text">Full Stack Engineer</h4>
+                            <p class="text-muted-professional mb-1 fw-bold">FinGrowth Solutions, New York</p>
+                            <p class="small text-muted-professional">2018 - 2021</p>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="text-light small">Designed and implemented a modular financial data visualization
+                                platform using React and GraphQL. Successfully onboarded and trained two junior
+                                developers, establishing team-wide code standards and practices.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Experience Item 3 -->
+                <li>
+                    <div class="timeline-badge"><i class="fas fa-code-branch"></i></div>
+                    <div class="timeline-panel card-base">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title accent-text">Software Developer Intern</h4>
+                            <p class="text-muted-professional mb-1 fw-bold">Innovation Labs, Remote</p>
+                            <p class="small text-muted-professional">2017 - 2018</p>
+                        </div>
+                        <div class="timeline-body">
+                            <p class="text-light small">Contributed to the development of internal automation scripts
+                                for QA testing, improving build reliability by 15%. Gained foundational experience in
+                                Java and SQL databases.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 4. Education History (New Section) -->
+    <section id="education" class="section-padding">
+        <div class="container text-center">
+            <h2 class="section-header">Education & Certifications</h2>
+            <div class="divider"></div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card-base p-4 text-start">
+                                <h4 class="accent-text">B.S. Computer Science</h4>
+                                <p class="mb-1 fw-bold text-light">Massachusetts Institute of Technology (MIT)</p>
+                                <p class="small text-muted-professional">2013 - 2017 | GPA: 3.9/4.0</p>
+                                <ul class="small text-muted-professional mt-3 mb-0" style="padding-left: 20px;">
+                                    <li>Concentration in Distributed Systems and Cloud Computing.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-base p-4 text-start">
+                                <h4 class="accent-text">AWS Certified Solutions Architect</h4>
+                                <p class="mb-1 fw-bold text-light">Amazon Web Services</p>
+                                <p class="small text-muted-professional">Certification Date: May 2023</p>
+                                <ul class="small text-muted-professional mt-3 mb-0" style="padding-left: 20px;">
+                                    <li>Validated deep expertise in designing and deploying scalable, secure, and
+                                        cost-effective cloud systems.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Projects Section -->
+    <section id="projects" class="section-padding" style="background-color: #121212;">
+        <div class="container text-center">
+            <h2 class="section-header">Top 5 Project Highlights</h2>
+            <div class="divider"></div>
+
+            <div class="row g-4">
+                <!-- Project 1 (Large Card) -->
+                <div class="col-lg-6">
+                    <div class="card-base p-0 min-vh-100 d-flex flex-column">
+                        <div class="project-img-placeholder">
+                            Project 1: Fintech Reporting Engine
+                        </div>
+                        <div class="p-4 flex-grow-1">
+                            <h5 class="fw-bold text-light">Enterprise Financial Reporting Platform</h5>
+                            <p class="text-muted-professional small">Developed a secure, compliance-ready dashboard for
+                                high-frequency financial data reporting, reducing quarterly generation time by 40%.</p>
+                            <p class="small"><span class="accent-text fw-bold">Technologies:</span> Python, Pandas,
+                                PostgreSQL, AWS Lambda, Vue.js</p>
+                        </div>
+                        <div class="p-4 pt-0">
+                            <a href="#" class="btn btn-sm btn-professional w-100">View Detailed Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 (Large Card) -->
+                <div class="col-lg-6">
+                    <div class="card-base p-0 min-vh-100 d-flex flex-column">
+                        <div class="project-img-placeholder">
+                            Project 2: Real-time Data Pipeline
+                        </div>
+                        <div class="p-4 flex-grow-1">
+                            <h5 class="fw-bold text-light">IoT Telemetry Data Pipeline</h5>
+                            <p class="text-muted-professional small">Engineered a robust, real-time data ingestion and
+                                visualization pipeline for over 10,000 active IoT devices using message queueing
+                                services.</p>
+                            <p class="small"><span class="accent-text fw-bold">Technologies:</span> Kafka, Go, Node.js,
+                                MongoDB, Grafana</p>
+                        </div>
+                        <div class="p-4 pt-0">
+                            <a href="#" class="btn btn-sm btn-professional w-100">Architectural Overview</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Three smaller projects in a row for density -->
+                <div class="col-lg-4">
+                    <div class="card-base p-0 min-vh-100 d-flex flex-column">
+                        <div class="p-4 flex-grow-1">
+                            <h5 class="fw-bold text-light accent-text">Internal Tools Suite</h5>
+                            <p class="text-muted-professional small">Created a specialized internal application to
+                                streamline cross-departmental workflow approvals and documentation.</p>
+                            <p class="small"><span class="accent-text fw-bold">Tech:</span> React, TypeScript,
+                                Firebase/Firestore</p>
+                        </div>
+                        <div class="p-4 pt-0">
+                            <a href="#" class="btn btn-sm btn-outline-professional w-100">View Features</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-base p-0 min-vh-100 d-flex flex-column">
+                        <div class="p-4 flex-grow-1">
+                            <h5 class="fw-bold text-light accent-text">Legacy System Modernization</h5>
+                            <p class="text-muted-professional small">Led the migration of a mission-critical SOAP
+                                service to a modern, containerized REST microservice for better performance.</p>
+                            <p class="small"><span class="accent-text fw-bold">Tech:</span> Java/Spring Boot, Docker,
+                                Kubernetes</p>
+                        </div>
+                        <div class="p-4 pt-0">
+                            <a href="#" class="btn btn-sm btn-outline-professional w-100">Technical Deep Dive</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-base p-0 min-vh-100 d-flex flex-column">
+                        <div class="p-4 flex-grow-1">
+                            <h5 class="fw-bold text-light accent-text">Reusable Component Library</h5>
+                            <p class="text-muted-professional small">Built a reusable, accessible component library
+                                based on Bootstrap 5 for rapid prototyping across several company products.</p>
+                            <p class="small"><span class="accent-text fw-bold">Tech:</span> SCSS, Bootstrap 5,
+                                Storybook, React</p>
+                        </div>
+                        <div class="p-4 pt-0">
+                            <a href="#" class="btn btn-sm btn-outline-professional w-100">View Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Contact Section (Refactored to Contact Card) -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-header text-center">Contact & Collaboration</h2>
+            <div class="divider"></div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card-base p-4 p-md-5">
+                        <div class="row">
+                            <!-- Left Column: CTA -->
+                            <div class="col-md-7 border-end border-secondary border-opacity-25 pe-md-5 mb-4 mb-md-0">
+                                <p class="contact-card-title accent-text">Ready to build something impactful?</p>
+                                <p class="lead text-muted-professional">I am actively seeking roles in
+                                    Senior/Architect-level engineering where I can drive technical strategy and mentor
+                                    high-performing teams.</p>
+                                <p class="small text-light mt-4">Availability for consultation: **Mon - Fri, 9am - 5pm
+                                    EST**</p>
+                                <a href="mailto:your.professional.email@example.com"
+                                    class="btn btn-professional btn-lg mt-3 w-100 w-md-auto">
+                                    <i class="fas fa-envelope me-2"></i> Send Direct Email
+                                </a>
+                            </div>
+
+                            <!-- Right Column: Details -->
+                            <div class="col-md-5 ps-md-5">
+                                <h4 class="text-light mb-4">Connect Digitally</h4>
+
+                                <div class="contact-detail">
+                                    <p class="mb-0 fw-bold">Email</p>
+                                    <p class="small text-muted-professional">your.professional.email@example.com</p>
+                                </div>
+                                <div class="contact-detail">
+                                    <p class="mb-0 fw-bold">Phone</p>
+                                    <p class="small text-muted-professional">(555) 555-1234 (By Appointment)</p>
+                                </div>
+                                <div class="contact-detail">
+                                    <p class="mb-0 fw-bold">Location</p>
+                                    <p class="small text-muted-professional">Currently Based in San Francisco, CA</p>
+                                </div>
+
+                                <div class="mt-4">
+                                    <a href="#" class="text-muted-professional h5 me-4"><i
+                                            class="fab fa-linkedin fa-fw"></i></a>
+                                    <a href="#" class="text-muted-professional h5 me-4"><i
+                                            class="fab fa-github fa-fw"></i></a>
+                                    <a href="#" class="text-muted-professional h5"><i
+                                            class="fab fa-twitter fa-fw"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0 small text-muted-professional">&copy; 2025 Your Name, Software Engineer. All Rights Reserved.
+                | Designed for professional impact.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- Font Awesome (for icons) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript for Smooth Scrolling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling logic for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.length > 1 && targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Function to update the active state of the navigation links
+            function updateNav() {
+                let current = 'home';
+                // Adjust this offset based on the height of your fixed navbar
+                const offset = 100;
+
+                // Get all scrollable sections
+                const sections = document.querySelectorAll('section, header');
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Check if the top of the section is visible on the screen
+                    if (pageYOffset >= sectionTop - offset) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateNav);
+            updateNav();
+        });
+    </script>
+</body>
+
+</html>
