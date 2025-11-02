@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bank App</title>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>MyBank</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Calculator</a>
+            <a href="#">Currency Converter</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Bank Calculator -->
+        <section id="calculator-section">
+            <h2>Bank Calculator</h2>
+            <div class="calculator">
+                <input type="text" id="calc-display" readonly>
+                <div class="calc-buttons">
+                    <button onclick="clearDisplay()">C</button>
+                    <button onclick="appendValue('+')">+</button>
+                    <button onclick="appendValue('-')">-</button>
+                    <button onclick="appendValue('*')">×</button>
+                    <button onclick="appendValue('/')">÷</button>
+                    <button onclick="appendValue('0')">0</button>
+                    <button onclick="appendValue('1')">1</button>
+                    <button onclick="appendValue('2')">2</button>
+                    <button onclick="appendValue('3')">3</button>
+                    <button onclick="appendValue('4')">4</button>
+                    <button onclick="appendValue('5')">5</button>
+                    <button onclick="appendValue('6')">6</button>
+                    <button onclick="appendValue('7')">7</button>
+                    <button onclick="appendValue('8')">8</button>
+                    <button onclick="appendValue('9')">9</button>
+                    <button onclick="calculate()">=</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Currency Converter -->
+        <section id="converter-section">
+            <h2>Currency Converter</h2>
+            <div class="converter">
+                <input type="number" id="amount" placeholder="Enter amount">
+                <select id="from-currency">
+                    <option value="AUD">AUD</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                </select>
+                <span>→</span>
+                <select id="to-currency">
+                    <option value="USD">USD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                </select>
+                <button onclick="convertCurrency()">Convert</button>
+                <p id="result"></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 MyBank | Designed by Syed</p>
+    </footer>
+</body>
+
+</html>
