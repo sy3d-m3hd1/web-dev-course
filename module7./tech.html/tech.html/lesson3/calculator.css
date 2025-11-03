@@ -1,0 +1,126 @@
+/* --- Basic Reset --- */
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+body {
+    background-color: #1c1c1c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* --- Calculator Container --- */
+.calculator {
+    background-color: #000;
+    border-radius: 40px;
+    padding: 25px;
+    width: 390px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    max-width: 95vw;
+    /* keeps it from overflowing on small screens */
+}
+
+/* --- Display --- */
+.display input {
+    width: 100%;
+    height: 90px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 52px;
+    text-align: right;
+    padding: 10px;
+    outline: none;
+}
+
+/* --- Buttons Grid --- */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 14px;
+    margin-top: 25px;
+}
+
+/* --- Buttons Styling --- */
+button {
+    height: 70px;
+    width: 100%;
+    border: none;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* --- Colors Like Apple Calculator --- */
+button:nth-child(1),
+button:nth-child(2),
+button:nth-child(3) {
+    background-color: #a5a5a5;
+    color: black;
+}
+
+button:nth-child(4n) {
+    background-color: #ff9f0a;
+    color: white;
+}
+
+button {
+    background-color: #333333;
+    color: white;
+}
+
+/* --- Zero Button (Double Width) --- */
+button.zero {
+    grid-column: span 2;
+    /* makes 0 button take two columns */
+    border-radius: 50px;
+    text-align: left;
+    padding-left: 32px;
+    width: 100%;
+    /* makes sure it expands nicely */
+}
+
+/* --- Button Hover --- */
+button:hover {
+    filter: brightness(1.2);
+}
+
+/* --- Responsive Design for All Devices --- */
+@media (max-width: 768px) {
+    .calculator {
+        width: 90%;
+        padding: 20px;
+    }
+
+    button {
+        height: 65px;
+        font-size: 26px;
+    }
+
+    .display input {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator {
+        width: 95%;
+        padding: 15px;
+        border-radius: 30px;
+    }
+
+    .display input {
+        height: 70px;
+        font-size: 38px;
+    }
+
+    button {
+        height: 60px;
+        font-size: 24px;
+    }
+}
