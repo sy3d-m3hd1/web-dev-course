@@ -2,55 +2,292 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bank App</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyBank - Digital Banking</title>
+    <style>
+        /* === RESET === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #0e0e0e;
+            color: #f1f1f1;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* === LOGIN PAGE === */
+        .login-page {
+            background: #151515;
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+            width: 350px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .login-page h1 {
+            color: #f9b233;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .login-page input {
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: #000;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .login-page button {
+            width: 100%;
+            padding: 0.9rem;
+            background: #f9b233;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .login-page button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* === DASHBOARD === */
+        .dashboard {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            background: #0e0e0e;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #111;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e1e1e;
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            color: #f9b233;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f9b233;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            overflow-y: auto;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        /* === ACCOUNT CARD === */
+        .balance {
+            font-size: 2.2rem;
+            margin-top: 1rem;
+            color: #f9b233;
+        }
+
+        /* === CALCULATOR === */
+        .calculator input {
+            width: 100%;
+            height: 60px;
+            font-size: 1.8rem;
+            text-align: right;
+            background: #000;
+            color: #f1f1f1;
+            border: none;
+            border-radius: 12px;
+            padding: 0 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.7rem;
+        }
+
+        .calc-buttons button {
+            background: #262626;
+            color: #f1f1f1;
+            border: none;
+            border-radius: 50%;
+            height: 60px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .calc-buttons button:hover {
+            background: #f9b233;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* === CURRENCY CONVERTER === */
+        .converter input,
+        .converter select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 12px;
+            background: #000;
+            color: #f1f1f1;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .converter button {
+            width: 100%;
+            padding: 0.9rem;
+            background: #f9b233;
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .converter button:hover {
+            background: #fff;
+        }
+
+        .converter #result {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            color: #f9b233;
+            font-weight: 500;
+        }
+
+        /* === TRANSACTIONS === */
+        .transactions ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .transactions li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: #111;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #999;
+            border-top: 1px solid #1e1e1e;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Header Section -->
-    <header>
-        <h1>MyBank</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Calculator</a>
-            <a href="#">Currency Converter</a>
-            <a href="#">About</a>
-        </nav>
-    </header>
 
-    <!-- Main Section -->
-    <main>
-        <!-- Bank Calculator -->
-        <section id="calculator-section">
-            <h2>Bank Calculator</h2>
-            <div class="calculator">
-                <input type="text" id="calc-display" readonly>
-                <div class="calc-buttons">
-                    <button onclick="clearDisplay()">C</button>
-                    <button onclick="appendValue('+')">+</button>
-                    <button onclick="appendValue('-')">-</button>
-                    <button onclick="appendValue('*')">×</button>
-                    <button onclick="appendValue('/')">÷</button>
-                    <button onclick="appendValue('0')">0</button>
-                    <button onclick="appendValue('1')">1</button>
-                    <button onclick="appendValue('2')">2</button>
-                    <button onclick="appendValue('3')">3</button>
-                    <button onclick="appendValue('4')">4</button>
-                    <button onclick="appendValue('5')">5</button>
-                    <button onclick="appendValue('6')">6</button>
-                    <button onclick="appendValue('7')">7</button>
-                    <button onclick="appendValue('8')">8</button>
-                    <button onclick="appendValue('9')">9</button>
-                    <button onclick="calculate()">=</button>
-                </div>
+    <!-- LOGIN SCREEN -->
+    <div class="login-page" id="login-page">
+        <h1>MyBank Login</h1>
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard" id="dashboard">
+        <header>
+            <h1>MyBank</h1>
+            <nav>
+                <a href="#">Dashboard</a>
+                <a href="#">Converter</a>
+                <a href="#">Calculator</a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Account Info -->
+            <div class="card account">
+                <h2>Account Summary</h2>
+                <p>Available Balance:</p>
+                <p class="balance" id="balance">$12,450.00</p>
             </div>
-        </section>
 
-        <!-- Currency Converter -->
-        <section id="converter-section">
-            <h2>Currency Converter</h2>
-            <div class="converter">
+            <!-- Transactions -->
+            <div class="card transactions">
+                <h2>Recent Transactions</h2>
+                <ul>
+                    <li><span>Spotify Subscription</span> <span>-$14.99</span></li>
+                    <li><span>Salary Deposit</span> <span>+$2,500.00</span></li>
+                    <li><span>Coffee Shop</span> <span>-$4.50</span></li>
+                    <li><span>Online Purchase</span> <span>-$89.99</span></li>
+                </ul>
+            </div>
+
+            <!-- Currency Converter -->
+            <div class="card converter">
+                <h2>Currency Converter</h2>
                 <input type="number" id="amount" placeholder="Enter amount">
                 <select id="from-currency">
                     <option value="AUD">AUD</option>
@@ -68,13 +305,87 @@
                 <button onclick="convertCurrency()">Convert</button>
                 <p id="result"></p>
             </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 MyBank | Designed by Syed</p>
-    </footer>
+            <!-- Calculator -->
+            <div class="card calculator">
+                <h2>Quick Calculator</h2>
+                <input type="text" id="calc-display" readonly>
+                <div class="calc-buttons">
+                    <button onclick="clearDisplay()">C</button>
+                    <button onclick="appendValue('+')">+</button>
+                    <button onclick="appendValue('-')">-</button>
+                    <button onclick="appendValue('*')">×</button>
+                    <button onclick="appendValue('/')">÷</button>
+                    <button onclick="appendValue('7')">7</button>
+                    <button onclick="appendValue('8')">8</button>
+                    <button onclick="appendValue('9')">9</button>
+                    <button onclick="appendValue('4')">4</button>
+                    <button onclick="appendValue('5')">5</button>
+                    <button onclick="appendValue('6')">6</button>
+                    <button onclick="appendValue('1')">1</button>
+                    <button onclick="appendValue('2')">2</button>
+                    <button onclick="appendValue('3')">3</button>
+                    <button onclick="appendValue('0')">0</button>
+                    <button onclick="calculate()">=</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            © 2025 MyBank | Designed by You 😎
+        </footer>
+    </div>
+
+    <script>
+        // === LOGIN ===
+        function login() {
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
+            if (user && pass) {
+                document.getElementById("login-page").style.display = "none";
+                document.getElementById("dashboard").style.display = "flex";
+            } else {
+                alert("Please enter username and password");
+            }
+        }
+
+        // === CALCULATOR ===
+        let calcDisplay = document.getElementById("calc-display");
+
+        function appendValue(value) {
+            calcDisplay.value += value;
+        }
+
+        function clearDisplay() {
+            calcDisplay.value = "";
+        }
+
+        function calculate() {
+            try {
+                calcDisplay.value = eval(calcDisplay.value);
+            } catch {
+                calcDisplay.value = "Error";
+            }
+        }
+
+        // === CURRENCY CONVERTER ===
+        const rates = {
+            USD: { AUD: 1.52, EUR: 0.93, GBP: 0.79, USD: 1 },
+            AUD: { USD: 0.66, EUR: 0.61, GBP: 0.52, AUD: 1 },
+            EUR: { USD: 1.07, AUD: 1.63, GBP: 0.85, EUR: 1 },
+            GBP: { USD: 1.27, AUD: 1.93, EUR: 1.18, GBP: 1 },
+        };
+
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const from = document.getElementById("from-currency").value;
+            const to = document.getElementById("to-currency").value;
+            if (!amount) return alert("Enter an amount");
+            const rate = rates[from][to];
+            const result = amount * rate;
+            document.getElementById("result").textContent = `${amount} ${from} = ${result.toFixed(2)} ${to}`;
+        }
+    </script>
 </body>
 
 </html>
