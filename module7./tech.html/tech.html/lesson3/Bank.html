@@ -2,389 +2,889 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MyBank - Digital Banking</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MyBank — Dashboard (Enhanced)</title>
     <style>
-        /* === RESET === */
+        /* -------------- Reset & fonts -------------- */
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
-            font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%
         }
 
         body {
-            background-color: #0e0e0e;
-            color: #f1f1f1;
-            height: 100vh;
-            overflow: hidden;
+            font-family: Inter, system-ui, -apple-system, "SF Pro Text", Roboto, "Segoe UI", Arial;
+            background: linear-gradient(180deg, #070708 0%, #0b0b0c 100%);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: #14202b;
         }
 
-        /* === LOGIN PAGE === */
-        .login-page {
-            background: #151515;
-            padding: 3rem 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
-            width: 350px;
-            text-align: center;
-            animation: fadeIn 1s ease;
+        /* -------------- Variables -------------- */
+        :root {
+            --accent: #ffd400;
+            /* CommBank yellow */
+            --accent-dark: #ffbf00;
+            --bg: #f6f7f8;
+            --panel: #ffffff;
+            --muted: #6b7178;
+            --card: #fbfcfc;
+            --glass: rgba(0, 0, 0, 0.03);
+            --radius: 14px;
+            --max-width: 1150px;
+            --shadow: 0 18px 50px rgba(8, 9, 10, 0.55);
         }
 
-        .login-page h1 {
-            color: #f9b233;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .login-page input {
+        /* -------------- App shell -------------- */
+        .app {
             width: 100%;
-            padding: 0.9rem;
-            border: none;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            background: #000;
-            color: #fff;
-            font-size: 1rem;
+            max-width: var(--max-width);
+            border-radius: 16px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            min-height: 78vh;
+            box-shadow: var(--shadow);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
         }
 
-        .login-page button {
-            width: 100%;
-            padding: 0.9rem;
-            background: #f9b233;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .login-page button:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        /* === DASHBOARD === */
-        .dashboard {
-            display: none;
-            width: 100%;
-            height: 100vh;
-            background: #0e0e0e;
+        /* -------------- Sidebar -------------- */
+        .sidebar {
+            background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+            padding: 26px;
             display: flex;
             flex-direction: column;
+            gap: 14px;
+            border-right: 1px solid rgba(0, 0, 0, 0.04);
         }
 
-        header {
-            background: #111;
-            padding: 1.2rem 2rem;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: #071018;
+            font-weight: 800;
+            font-size: 16px;
+            box-shadow: 0 8px 20px rgba(255, 180, 0, 0.14);
+        }
+
+        .app-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #071018
+        }
+
+        .sidebar .muted {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .auth-block {
+            margin-top: 6px;
+            background: transparent;
+            padding-top: 6px
+        }
+
+        .input {
+            width: 100%;
+            padding: 11px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            font-size: 14px;
+            background: #fff;
+            margin-bottom: 10px
+        }
+
+        .auth-row {
+            display: flex;
+            gap: 10px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: #071018;
+            box-shadow: 0 8px 18px rgba(255, 190, 0, 0.12)
+        }
+
+        .btn.ghost {
+            background: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            color: #071018
+        }
+
+        .nav {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+
+        .nav a {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #071018;
+            font-weight: 700
+        }
+
+        .nav a:hover {
+            background: rgba(0, 0, 0, 0.03)
+        }
+
+        /* -------------- Main content -------------- */
+        .main {
+            background: var(--panel);
+            display: flex;
+            flex-direction: column;
+            min-height: 78vh
+        }
+
+        header.topbar {
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            padding: 16px 26px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #1e1e1e;
+            color: #071018;
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.04);
         }
 
-        header h1 {
-            font-size: 1.6rem;
-            color: #f9b233;
+        .top-left {
+            display: flex;
+            gap: 14px;
+            align-items: center
         }
 
-        nav a {
-            color: #ccc;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #f9b233;
-        }
-
-        main {
-            flex: 1;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            overflow-y: auto;
-        }
-
-        .card {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
-            transition: transform 0.2s ease;
-        }
-
-        .card:hover {
-            transform: scale(1.02);
-        }
-
-        /* === ACCOUNT CARD === */
-        .balance {
-            font-size: 2.2rem;
-            margin-top: 1rem;
-            color: #f9b233;
-        }
-
-        /* === CALCULATOR === */
-        .calculator input {
-            width: 100%;
-            height: 60px;
-            font-size: 1.8rem;
-            text-align: right;
-            background: #000;
-            color: #f1f1f1;
-            border: none;
-            border-radius: 12px;
-            padding: 0 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .calc-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.7rem;
-        }
-
-        .calc-buttons button {
-            background: #262626;
-            color: #f1f1f1;
-            border: none;
+        .avatar {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            height: 60px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .calc-buttons button:hover {
-            background: #f9b233;
-            color: #000;
-            transform: translateY(-3px);
-        }
-
-        /* === CURRENCY CONVERTER === */
-        .converter input,
-        .converter select {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
-            border: none;
-            border-radius: 12px;
-            background: #000;
-            color: #f1f1f1;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        .converter button {
-            width: 100%;
-            padding: 0.9rem;
-            background: #f9b233;
-            color: #000;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .converter button:hover {
             background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #071018
         }
 
-        .converter #result {
-            margin-top: 1rem;
-            font-size: 1.3rem;
-            color: #f9b233;
-            font-weight: 500;
+        .greeting {
+            font-size: 18px;
+            font-weight: 800
         }
 
-        /* === TRANSACTIONS === */
-        .transactions ul {
-            list-style: none;
-            margin-top: 1rem;
+        .last-login {
+            font-size: 13px;
+            color: #071018;
+            opacity: .9
         }
 
-        .transactions li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #333;
+        .top-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        /* -------------- Dashboard grid -------------- */
+        .dashboard-grid {
+            padding: 26px;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 22px;
+            align-items: start
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+            color: #071018
+        }
+
+        .section-title {
+            font-weight: 800;
+            margin-bottom: 8px
+        }
+
+        .small-muted {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        /* Accounts */
+        .account-list {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .account {
             display: flex;
             justify-content: space-between;
-            font-size: 0.95rem;
+            align-items: center;
+            padding: 14px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #fff, #fcfcfc);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: transform .12s ease, box-shadow .12s ease;
         }
 
-        /* === FOOTER === */
-        footer {
+        .account:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(14, 20, 26, 0.06)
+        }
+
+        .meta {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .acc-flag {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark))
+        }
+
+        .acc-name {
+            font-weight: 800
+        }
+
+        .acc-num {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .acc-balance {
+            font-weight: 900;
+            font-size: 16px;
+            color: #071018
+        }
+
+        /* Recent tx */
+        .tx-list {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 260px;
+            overflow: auto
+        }
+
+        .tx {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.04)
+        }
+
+        .tx .t-left {
+            font-size: 13px
+        }
+
+        .tx .t-right {
+            font-weight: 800
+        }
+
+        .tx:hover {
+            background: #fffef7
+        }
+
+        /* Right column: main balance + tools */
+        .balance-big {
+            font-weight: 900;
+            font-size: 26px;
+            color: #071018;
+            margin-top: 8px
+        }
+
+        .account-actions input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            margin-top: 12px
+        }
+
+        .account-actions .row {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px
+        }
+
+        .account-actions .row .btn {
+            flex: 1
+        }
+
+        /* Transfer */
+        .transfer-row {
+            display: flex;
+            gap: 10px
+        }
+
+        .transfer-row select,
+        .transfer-row input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: #fff
+        }
+
+        /* Converter */
+        .converter select,
+        .converter input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: #fff;
+            margin-top: 8px
+        }
+
+        /* Calculator */
+        .calc-display {
+            width: 100%;
+            padding: 12px;
+            font-size: 22px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: #fff;
+            text-align: right
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 10px
+        }
+
+        .calc-grid button {
+            padding: 10px;
+            border-radius: 12px;
+            border: none;
             background: #111;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-            color: #999;
-            border-top: 1px solid #1e1e1e;
+            color: #fff;
+            font-weight: 800;
+            cursor: pointer
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
+        .calc-grid button.op {
+            background: var(--accent);
+            color: #071018
+        }
+
+        /* Footer */
+        footer {
+            padding: 14px 26px;
+            background: #fff;
+            font-size: 13px;
+            color: #4a4f55;
+            border-top: 1px solid rgba(0, 0, 0, 0.04)
+        }
+
+        /* Mobile */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 14px;
+            width: min(600px, 96%);
+            background: #fff;
+            border-radius: 999px;
+            padding: 8px;
+            display: flex;
+            gap: 6px;
+            justify-content: space-between;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12)
+        }
+
+        .mobile-nav button {
+            flex: 1;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            padding: 8px;
+            border-radius: 999px
+        }
+
+        @media (max-width:980px) {
+            .app {
+                grid-template-columns: 1fr
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .sidebar {
+                order: 2;
+                flex-direction: row;
+                gap: 12px;
+                align-items: center;
+                padding: 12px;
+                overflow: auto
             }
+
+            .main {
+                order: 1;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                padding: 18px
+            }
+
+            .mobile-nav {
+                display: flex
+            }
+
+            .nav {
+                display: none
+            }
+
+            .auth-block {
+                display: block
+            }
+        }
+
+        /* Small UI helpers */
+        .muted-note {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 8px
         }
     </style>
 </head>
 
 <body>
+    <div class="app" id="app">
 
-    <!-- LOGIN SCREEN -->
-    <div class="login-page" id="login-page">
-        <h1>MyBank Login</h1>
-        <input type="text" id="username" placeholder="Username" />
-        <input type="password" id="password" placeholder="Password" />
-        <button onclick="login()">Login</button>
-    </div>
-
-    <!-- DASHBOARD -->
-    <div class="dashboard" id="dashboard">
-        <header>
-            <h1>MyBank</h1>
-            <nav>
-                <a href="#">Dashboard</a>
-                <a href="#">Converter</a>
-                <a href="#">Calculator</a>
-            </nav>
-        </header>
-
-        <main>
-            <!-- Account Info -->
-            <div class="card account">
-                <h2>Account Summary</h2>
-                <p>Available Balance:</p>
-                <p class="balance" id="balance">$12,450.00</p>
-            </div>
-
-            <!-- Transactions -->
-            <div class="card transactions">
-                <h2>Recent Transactions</h2>
-                <ul>
-                    <li><span>Spotify Subscription</span> <span>-$14.99</span></li>
-                    <li><span>Salary Deposit</span> <span>+$2,500.00</span></li>
-                    <li><span>Coffee Shop</span> <span>-$4.50</span></li>
-                    <li><span>Online Purchase</span> <span>-$89.99</span></li>
-                </ul>
-            </div>
-
-            <!-- Currency Converter -->
-            <div class="card converter">
-                <h2>Currency Converter</h2>
-                <input type="number" id="amount" placeholder="Enter amount">
-                <select id="from-currency">
-                    <option value="AUD">AUD</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                </select>
-                <span>→</span>
-                <select id="to-currency">
-                    <option value="USD">USD</option>
-                    <option value="AUD">AUD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                </select>
-                <button onclick="convertCurrency()">Convert</button>
-                <p id="result"></p>
-            </div>
-
-            <!-- Calculator -->
-            <div class="card calculator">
-                <h2>Quick Calculator</h2>
-                <input type="text" id="calc-display" readonly>
-                <div class="calc-buttons">
-                    <button onclick="clearDisplay()">C</button>
-                    <button onclick="appendValue('+')">+</button>
-                    <button onclick="appendValue('-')">-</button>
-                    <button onclick="appendValue('*')">×</button>
-                    <button onclick="appendValue('/')">÷</button>
-                    <button onclick="appendValue('7')">7</button>
-                    <button onclick="appendValue('8')">8</button>
-                    <button onclick="appendValue('9')">9</button>
-                    <button onclick="appendValue('4')">4</button>
-                    <button onclick="appendValue('5')">5</button>
-                    <button onclick="appendValue('6')">6</button>
-                    <button onclick="appendValue('1')">1</button>
-                    <button onclick="appendValue('2')">2</button>
-                    <button onclick="appendValue('3')">3</button>
-                    <button onclick="appendValue('0')">0</button>
-                    <button onclick="calculate()">=</button>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo">MB</div>
+                <div>
+                    <div class="app-title">MyBank</div>
+                    <div class="muted">Secure · Friendly · Local</div>
                 </div>
             </div>
-        </main>
 
-        <footer>
-            © 2025 MyBank | Designed by You 😎
-        </footer>
+            <!-- AUTH -->
+            <div class="auth-block" id="auth-panel">
+                <div class="muted">Sign in or create an account</div>
+                <input id="auth-username" class="input" placeholder="Username (email or name)" />
+                <input id="auth-password" class="input" type="password" placeholder="Password" />
+                <div class="auth-row">
+                    <button class="btn primary" onclick="handleSignIn()">Sign In</button>
+                    <button class="btn ghost" onclick="handleSignUp()">Sign Up</button>
+                </div>
+                <div class="muted-note">Tip: This demo stores your account locally in your browser (no external
+                    servers).</div>
+            </div>
+
+            <!-- NAV (shown after login) -->
+            <div id="nav-panel" style="display:none">
+                <div class="muted">Quick Links</div>
+                <nav class="nav">
+                    <a href="#" onclick="showSection('overview')">Overview</a>
+                    <a href="#" onclick="showSection('transfer')">Transfer</a>
+                    <a href="#" onclick="showSection('converter')">Converter</a>
+                    <a href="#" onclick="showSection('calculator')">Calculator</a>
+                </nav>
+                <div style="margin-top:auto">
+                    <div class="muted">Session</div>
+                    <div style="display:flex;gap:8px;margin-top:8px">
+                        <button class="btn ghost" onclick="quickLogout()">Sign out</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main">
+            <header class="topbar">
+                <div class="top-left">
+                    <div class="avatar" id="avatar-letter">U</div>
+                    <div>
+                        <div class="greeting" id="greeting">Welcome — please sign in</div>
+                        <div class="last-login" id="last-login">Not signed in</div>
+                    </div>
+                </div>
+                <div class="top-actions">
+                    <div class="small-muted" id="top-balance">Balance: $0.00</div>
+                    <button class="btn primary" onclick="showSection('transfer')">Make a transfer</button>
+                </div>
+            </header>
+
+            <section class="dashboard-grid">
+                <!-- LEFT column -->
+                <div>
+                    <!-- Overview -->
+                    <div class="card" id="overview-section">
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <div>
+                                <div class="section-title">Accounts</div>
+                                <div class="small-muted">Your account overview</div>
+                            </div>
+                            <div class="small-muted">Total funds</div>
+                        </div>
+
+                        <div id="account-list" class="account-list"></div>
+
+                        <div style="margin-top:14px">
+                            <div class="small-muted">Recent activity</div>
+                            <div id="tx-list" class="tx-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Transfer -->
+                    <div class="card" id="transfer-section" style="margin-top:14px;display:none">
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <div class="section-title">Transfer money</div>
+                            <div class="small-muted">Safe & instant</div>
+                        </div>
+
+                        <div style="margin-top:12px" class="transfer-row">
+                            <select id="from-account"></select>
+                            <select id="to-account"></select>
+                        </div>
+
+                        <input id="transfer-amount" type="number" placeholder="Amount ($)"
+                            style="margin-top:12px;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)" />
+
+                        <div style="display:flex;gap:10px;margin-top:12px">
+                            <button class="btn primary" onclick="performTransfer()">Transfer</button>
+                            <button class="btn ghost" onclick="showSection('overview')">Cancel</button>
+                        </div>
+                        <div class="muted-note">Transfers update both accounts and record transactions.</div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT column -->
+                <aside class="right-column">
+                    <div class="card">
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <div class="section-title">Main account</div>
+                            <div class="small-muted">Available</div>
+                        </div>
+                        <div id="main-balance" class="balance-big">$0.00</div>
+
+                        <div class="account-actions">
+                            <input id="quick-amount" type="number" placeholder="Enter amount" />
+                            <div class="row">
+                                <button class="btn primary" onclick="depositQuick()">Deposit</button>
+                                <button class="btn ghost" onclick="withdrawQuick()">Withdraw</button>
+                            </div>
+                        </div>
+                        <div class="muted-note">Quick deposit / withdraw. Records are stored locally.</div>
+                    </div>
+
+                    <div class="card converter" id="converter-section" style="display:none">
+                        <div class="section-title">Currency converter</div>
+                        <div class="small-muted">Convert currencies fast</div>
+                        <input id="conv-amount" type="number" placeholder="Amount" />
+                        <select id="conv-from">
+                            <option value="AUD">AUD</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                        <select id="conv-to">
+                            <option value="USD">USD</option>
+                            <option value="AUD">AUD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                        <button class="btn primary" style="width:100%;margin-top:8px"
+                            onclick="doConvert()">Convert</button>
+                        <div id="conv-result" style="margin-top:10px;font-weight:800"></div>
+                    </div>
+
+                    <div class="card" id="calculator-section" style="display:none">
+                        <div class="section-title">Quick calculator</div>
+                        <input id="calc-display" class="calc-display" readonly />
+                        <div class="calc-grid">
+                            <button onclick="calcPress('7')">7</button>
+                            <button onclick="calcPress('8')">8</button>
+                            <button onclick="calcPress('9')">9</button>
+                            <button class="op" onclick="calcPress('/')">÷</button>
+
+                            <button onclick="calcPress('4')">4</button>
+                            <button onclick="calcPress('5')">5</button>
+                            <button onclick="calcPress('6')">6</button>
+                            <button class="op" onclick="calcPress('*')">×</button>
+
+                            <button onclick="calcPress('1')">1</button>
+                            <button onclick="calcPress('2')">2</button>
+                            <button onclick="calcPress('3')">3</button>
+                            <button class="op" onclick="calcPress('-')">−</button>
+
+                            <button onclick="calcPress('0')">0</button>
+                            <button onclick="calcPress('.')">.</button>
+                            <button onclick="calcClear()">C</button>
+                            <button class="op" onclick="calcPress('+')">+</button>
+                        </div>
+                        <div style="display:flex;gap:8px;margin-top:10px">
+                            <button class="btn primary" style="flex:1" onclick="calcCompute()">=</button>
+                            <button class="btn ghost" style="flex:1" onclick="copyCalc()">Copy</button>
+                        </div>
+                    </div>
+
+                </aside>
+            </section>
+
+            <footer>© 2025 MyBank · Demo. Data stored locally in this browser.</footer>
+        </main>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+        <button onclick="showSection('overview')">Overview</button>
+        <button onclick="showSection('transfer')">Transfer</button>
+        <button onclick="showSection('converter')">Convert</button>
+        <button onclick="showSection('calculator')">Calc</button>
     </div>
 
     <script>
-        // === LOGIN ===
-        function login() {
-            const user = document.getElementById("username").value;
-            const pass = document.getElementById("password").value;
-            if (user && pass) {
-                document.getElementById("login-page").style.display = "none";
-                document.getElementById("dashboard").style.display = "flex";
-            } else {
-                alert("Please enter username and password");
-            }
+        /* ---------------- Data model & helpers ----------------
+           Users stored in localStorage "mybank_users" as:
+           { username: { pass, accounts: [ {id,name,number,currency,balance,tx:[] }, ... ] } }
+           active session: localStorage "mybank_session" = username
+        */
+        const $ = id => document.getElementById(id);
+        function money(v) { return "$" + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+        function loadUsers() { return JSON.parse(localStorage.getItem('mybank_users') || '{}'); }
+        function saveUsers(u) { localStorage.setItem('mybank_users', JSON.stringify(u)); }
+        function setSession(user) { localStorage.setItem('mybank_session', user); }
+        function getSession() { return localStorage.getItem('mybank_session'); }
+        function clearSession() { localStorage.removeItem('mybank_session'); }
+
+        function defaultAccountsFor() {
+            const now = new Date().toISOString();
+            return [
+                {
+                    id: 'acc-main', name: 'Everyday Account', number: '*** 1940', currency: 'AUD', balance: 1245.00,
+                    tx: [{ date: now, desc: 'Opening balance', amount: 1245, type: 'credit' }]
+                },
+                {
+                    id: 'acc-saver', name: 'Goal Saver', number: '*** 9014', currency: 'AUD', balance: 560.50,
+                    tx: [{ date: now, desc: 'Opening balance', amount: 560.5, type: 'credit' }]
+                }
+            ];
         }
 
-        // === CALCULATOR ===
-        let calcDisplay = document.getElementById("calc-display");
-
-        function appendValue(value) {
-            calcDisplay.value += value;
+        /* ---------------- Auth ---------------- */
+        function handleSignUp() {
+            const u = $('auth-username').value.trim();
+            const p = $('auth-password').value;
+            if (!u || !p) { alert('Enter username and password'); return; }
+            const users = loadUsers();
+            if (users[u]) { alert('User exists. Sign in instead.'); return; }
+            users[u] = { pass: p, accounts: defaultAccountsFor() };
+            saveUsers(users);
+            alert('Account created. You can sign in now.');
+            $('auth-password').value = '';
         }
 
-        function clearDisplay() {
-            calcDisplay.value = "";
+        function handleSignIn() {
+            const u = $('auth-username').value.trim();
+            const p = $('auth-password').value;
+            if (!u || !p) { alert('Enter username and password'); return; }
+            const users = loadUsers();
+            if (!users[u]) { alert('No account found. Please sign up.'); return; }
+            if (users[u].pass !== p) { alert('Invalid credentials'); return; }
+            setSession(u); showAfterLogin();
+            // clear inputs for privacy
+            $('auth-password').value = '';
+            $('auth-username').value = '';
         }
 
-        function calculate() {
-            try {
-                calcDisplay.value = eval(calcDisplay.value);
-            } catch {
-                calcDisplay.value = "Error";
-            }
+        function quickLogout() { if (confirm('Sign out?')) { clearSession(); location.reload(); } }
+
+        /* ---------------- UI after login & updates ---------------- */
+        function showAfterLogin() {
+            const user = getSession(); if (!user) return;
+            $('auth-panel').style.display = 'none'; $('nav-panel').style.display = 'block';
+            $('avatar-letter').textContent = (user[0] || 'U').toUpperCase();
+            $('greeting').textContent = `Good morning, ${user.split('@')[0] || user}`;
+            $('last-login').textContent = `Last login: ${new Date().toLocaleString()}`;
+            updateAllDisplays();
         }
 
-        // === CURRENCY CONVERTER ===
-        const rates = {
+        function updateAllDisplays() {
+            const user = getSession(); if (!user) return;
+            const users = loadUsers(); const me = users[user]; if (!me) return;
+            // accounts
+            const list = $('account-list'); list.innerHTML = '';
+            let total = 0;
+            me.accounts.forEach(acc => {
+                total += Number(acc.balance);
+                const el = document.createElement('div'); el.className = 'account';
+                el.innerHTML = `
+          <div class="meta">
+            <div class="acc-flag">${acc.currency}</div>
+            <div>
+              <div class="acc-name">${acc.name}</div>
+              <div class="acc-num">${acc.number}</div>
+            </div>
+          </div>
+          <div class="acc-balance">${money(acc.balance)}</div>
+        `;
+                list.appendChild(el);
+            });
+            $('top-balance').textContent = `Balance: ${money(total)}`;
+            $('main-balance').textContent = money(me.accounts[0].balance);
+
+            // transactions: merge all accounts and sort by date desc
+            const txList = $('tx-list'); txList.innerHTML = '';
+            const allTx = [];
+            me.accounts.forEach(a => a.tx.forEach(t => allTx.push({ ...t, account: a.name })));
+            allTx.sort((a, b) => new Date(b.date) - new Date(a.date));
+            allTx.slice(0, 12).forEach(t => {
+                const d = document.createElement('div'); d.className = 'tx';
+                d.innerHTML = `<div class="t-left"><div style="font-weight:700">${t.desc}</div><div class="small-muted">${t.account} • ${new Date(t.date).toLocaleString()}</div></div><div class="t-right">${t.type === 'debit' ? '-' : '+'}${money(t.amount)}</div>`;
+                txList.appendChild(d);
+            });
+
+            // fill transfer selects
+            const from = $('from-account'); const to = $('to-account'); if (from && to) { from.innerHTML = ''; to.innerHTML = ''; me.accounts.forEach(acc => { const opt = document.createElement('option'); opt.value = acc.id; opt.textContent = `${acc.name} ${acc.number} ${money(acc.balance)}`; from.appendChild(opt); to.appendChild(opt.cloneNode(true)); }); }
+            saveUsers(users);
+        }
+
+        /* ---------------- Account ops ---------------- */
+        function applyTransactionToAccount(idx, amount, desc, type) {
+            const user = getSession(); if (!user) return; const users = loadUsers(); const acc = users[user].accounts[idx];
+            const now = new Date().toISOString();
+            if (type === 'credit') acc.balance = Number(acc.balance) + Number(amount);
+            else acc.balance = Number(acc.balance) - Number(amount);
+            acc.tx.push({ date: now, desc, amount: Number(amount), type: type === 'debit' ? 'debit' : 'credit' });
+            saveUsers(users);
+        }
+
+        function depositQuick() {
+            const amount = parseFloat($('quick-amount').value);
+            if (!(amount > 0)) { alert('Enter valid amount'); return; }
+            applyTransactionToAccount(0, amount, 'Deposit', 'credit');
+            $('quick-amount').value = ''; updateAllDisplays();
+        }
+        function withdrawQuick() {
+            const amount = parseFloat($('quick-amount').value);
+            if (!(amount > 0)) { alert('Enter valid amount'); return; }
+            const user = getSession(), users = loadUsers(), acc = users[user].accounts[0];
+            if (amount > acc.balance) { alert('Insufficient funds'); return; }
+            applyTransactionToAccount(0, amount, 'Withdrawal', 'debit');
+            $('quick-amount').value = ''; updateAllDisplays();
+        }
+
+        /* ---------------- Transfer ---------------- */
+        function performTransfer() {
+            const amt = parseFloat($('transfer-amount').value);
+            const fromId = $('from-account').value, toId = $('to-account').value;
+            if (!amt || amt <= 0) { alert('Enter valid amount'); return; }
+            if (fromId === toId) { alert('Choose different accounts'); return; }
+            const user = getSession(), users = loadUsers(), me = users[user];
+            const fromAcc = me.accounts.find(a => a.id === fromId), toAcc = me.accounts.find(a => a.id === toId);
+            if (!fromAcc || !toAcc) { alert('Account not found'); return; }
+            if (amt > fromAcc.balance) { alert('Insufficient funds'); return; }
+            fromAcc.balance -= amt; fromAcc.tx.push({ date: new Date().toISOString(), desc: `Transfer to ${toAcc.name}`, amount: amt, type: 'debit' });
+            toAcc.balance += amt; toAcc.tx.push({ date: new Date().toISOString(), desc: `Transfer from ${fromAcc.name}`, amount: amt, type: 'credit' });
+            saveUsers(users);
+            $('transfer-amount').value = ''; alert('Transfer successful'); updateAllDisplays(); showSection('overview');
+        }
+
+        /* ---------------- Sections ---------------- */
+        function showSection(name) {
+            const map = { overview: ['overview-section'], transfer: ['transfer-section'], converter: ['converter-section'], calculator: ['calculator-section'] };
+            ['overview-section', 'transfer-section', 'converter-section', 'calculator-section'].forEach(id => { const el = $(id); if (el) el.style.display = 'none'; });
+            (map[name] || map['overview']).forEach(id => { const el = $(id); if (el) el.style.display = 'block'; });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ---------------- Converter ---------------- */
+        const RATES = {
             USD: { AUD: 1.52, EUR: 0.93, GBP: 0.79, USD: 1 },
             AUD: { USD: 0.66, EUR: 0.61, GBP: 0.52, AUD: 1 },
             EUR: { USD: 1.07, AUD: 1.63, GBP: 0.85, EUR: 1 },
-            GBP: { USD: 1.27, AUD: 1.93, EUR: 1.18, GBP: 1 },
+            GBP: { USD: 1.27, AUD: 1.93, EUR: 1.18, GBP: 1 }
         };
-
-        function convertCurrency() {
-            const amount = parseFloat(document.getElementById("amount").value);
-            const from = document.getElementById("from-currency").value;
-            const to = document.getElementById("to-currency").value;
-            if (!amount) return alert("Enter an amount");
-            const rate = rates[from][to];
-            const result = amount * rate;
-            document.getElementById("result").textContent = `${amount} ${from} = ${result.toFixed(2)} ${to}`;
+        function doConvert() {
+            const amt = parseFloat($('conv-amount').value);
+            if (!(amt > 0)) { alert('Enter amount'); return; }
+            const from = $('conv-from').value, to = $('conv-to').value;
+            const rate = RATES[from] && RATES[from][to] ? RATES[from][to] : 1;
+            $('conv-result').textContent = `${amt} ${from} = ${(amt * rate).toFixed(2)} ${to}  (rate ${rate})`;
         }
+
+        /* ---------------- Calculator ---------------- */
+        let calcBuffer = '';
+        function calcPress(v) { calcBuffer += v; $('calc-display').value = calcBuffer; }
+        function calcClear() { calcBuffer = ''; $('calc-display').value = ''; }
+        function calcCompute() {
+            try {
+                const safe = calcBuffer.replace(/[^0-9+\-*/.() ]/g, '');
+                const val = Function('"use strict";return (' + safe + ')')();
+                $('calc-display').value = String(val); calcBuffer = String(val);
+            } catch (e) { $('calc-display').value = 'Error'; calcBuffer = ''; }
+        }
+        function copyCalc() { navigator.clipboard?.writeText($('calc-display').value || ''); alert('Copied to clipboard'); }
+
+        /* ---------------- Init ---------------- */
+        function init() {
+            const session = getSession();
+            if (session) { $('auth-panel').style.display = 'none'; $('nav-panel').style.display = 'block'; showAfterLogin(); } else { $('auth-panel').style.display = 'block'; $('nav-panel').style.display = 'none'; }
+            showSection('overview');
+            if (window.innerWidth < 980) $('mobile-nav').style.display = 'flex'; else $('mobile-nav').style.display = 'none';
+        }
+
+        function logout() { if (confirm('Log out?')) { clearSession(); location.reload(); } }
+
+        window.addEventListener('DOMContentLoaded', init);
+        window.addEventListener('resize', () => { if (window.innerWidth < 980) $('mobile-nav').style.display = 'flex'; else $('mobile-nav').style.display = 'none'; });
     </script>
 </body>
 
