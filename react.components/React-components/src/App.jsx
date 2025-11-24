@@ -10,7 +10,7 @@ export default function App() {
       <p className="text-xl mb-4">Count: {count}</p>
 
       <button
-        onClick={() => setCount(count + 1)}
+        onClick={() => setCount(count + 2)}
         className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl text-lg transition-all"
       >
         Increase
